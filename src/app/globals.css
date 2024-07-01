@@ -2,10 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --table-hover: rgb(8 47 73);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,9 +32,60 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+tr, td{
+  transition: all 350ms ease-in-out;
+}
+table:has(th:first-child:hover) tr td:first-child{
+  background-color: var(--table-hover);
+}
+table:has(td:first-child:hover) td:first-child{
+  background-color: var(--table-hover);
+}
+table:has(td:nth-child(2):hover) td:nth-child(2){
+  background-color: var(--table-hover);
+}
+table:has(td:nth-child(3):hover) td:nth-child(3){
+  background-color: var(--table-hover);
+}
+table:has(td:nth-child(4):hover) td:nth-child(4){
+  background-color: var(--table-hover);
+}
+table:has(td:nth-child(5):hover) td:nth-child(5){
+  background-color: var(--table-hover);
+}
+table:has(td:nth-child(6):hover) td:nth-child(6){
+  background-color: var(--table-hover);
+}
+table:has(td:nth-child(7):hover) td:nth-child(7){
+  background-color: var(--table-hover);
+}
+table:has(tr:first-child:hover) tr:first-child{
+  background-color: var(--table-hover);
+}
+table:has(tr:nth-child(2):hover) tr:nth-child(2){
+  background-color: var(--table-hover);
+}
+table:has(tr:nth-child(3):hover) tr:nth-child(3){
+  background-color: var(--table-hover);
+}
+table:has(tr:nth-child(4):hover) tr:nth-child(4){
+  background-color: var(--table-hover);
+}
+table:has(tr:nth-child(5):hover) tr:nth-child(5){
+  background-color: var(--table-hover);
+}
+table:has(tr:nth-child(6):hover) tr:nth-child(6){
+  background-color: var(--table-hover);
+}
+table:has(tr:nth-child(7):hover) tr:nth-child(7){
+  background-color: var(--table-hover);
+}
+table:has(tr:nth-child(8):hover) tr:nth-child(8){
+  background-color: var(--table-hover);
+}
+table:has(tr:nth-child(9):hover) tr:nth-child(9){
+  background-color: var(--table-hover);
+}
+table:has(tr:nth-child(10):hover) tr:nth-child(10){
+  background-color: var(--table-hover);
 }
