@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from 'react';
-import { supabase } from '../api/supabaseClient';
+import { supabase } from '@/components/supabase/supabaseClient';
 
 const useUserRole = (userId) => {
     const [role, setRole] = useState(null);
