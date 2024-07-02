@@ -1,9 +1,9 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import { FetchAndDisplayData, handleConfirmDelete, handleSaveData } from '../supabase';
+import EditPopup from '@/components/dataList/editPopUp';
+import DeletePopUp from '@/components/dataList/deleteData';
 import { ToastContainer, toast } from 'react-toastify';
-import EditPopup from './EditPopup';
-import DeletePopUp from './deleteData';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function DataSet() {
