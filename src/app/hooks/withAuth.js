@@ -1,7 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { supabase } from '../api/supabaseClient';
+import { supabase } from '@/components/supabase/supabaseClient';
 import useUserRole from './useUserRole';
 
 const withAuth = (WrappedComponent, allowedRoles = []) => {
