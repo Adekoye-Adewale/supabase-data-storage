@@ -1,5 +1,5 @@
-'useclient'
-import { useRouter } from 'next/router';
+'use client'
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { supabase } from '../api/supabaseClient';
 import useUserRole from './useUserRole';
