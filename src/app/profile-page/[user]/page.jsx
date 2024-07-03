@@ -1,36 +1,48 @@
-import React from 'react'
-import { supabase } from '@/components/supabase/supabaseClient';
+import React from 'react';
+import { createClient as supabase } from '@/app/utils/supabase/client';
 
-export async function getPost(params) {
-    const { user } = params;
-    const { data: { session } } = await supabase.auth.getSession();
-    let profile = null;
+export default async function UserPage({ params }) {
+  const { user } = params; // Assuming `user` is the identifier
+  let userProfile = null;
+  let error = null;
 
-    if (session) {
-        const { data: userProfile, error } = await supabase
-            .from('user_profiles')
-            .select('cover_img, user_avatar, phone_number, user_name')
-            .eq('id', session.user.id)
-            .single();
+  try {
+    // Directly query the user profile based on the provided identifier
+    const { data: userProfileData, error: profileError } = await supabase
+      .from('user_profiles')
+      .select('cover_img, user_avatar, email, full_name, phone_number, user_name')
+      .eq('user_name', user) // Assuming `user` is the username
+      .single();
 
-        if (error) {
-            console.error('Error fetching user profile:', error);
-        } else {
-            profile = userProfile;
-        }
+    if (profileError) {
+      throw new Error(`Profile fetch error: ${profileError.message}`);
+    } else {
+      userProfile = userProfileData;
     }
+  } catch (err) {
+    error = err;
+  }
 
-    return {
-        props: {
-            profile,
-        },
-    };
-}
+  console.log('=======>',userProfile);
 
-export default function UserPage({ params, userProfile}) {
-    return (
-        <div>
-            {params.user}
-        </div>
-    )
+  if (error) {
+    return <div>Error fetching user data: {error.message}</div>;
+  }
+
+  if (!userProfile) {
+    return <div>No user profile found.</div>;
+  }
+
+  return (
+    <div>
+      <h1>{params.user}</h1>
+      <p>
+        <span>Username:</span> {userProfile.user_name}
+      </p>
+      <p>
+        <span>Phone Number:</span> {userProfile.phone_number} (optional: handle privacy)
+      </p>
+      {/* Add other profile details here */}
+    </div>
+  );
 }
