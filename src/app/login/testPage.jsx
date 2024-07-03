@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '../api/supabaseClient';
+import { createClient as supabase } from '@/app/utils/supabase/client';
 import Modal from '@/components/notification/modal';
 
 
