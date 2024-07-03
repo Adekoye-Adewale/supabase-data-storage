@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import { FetchAndDisplayData } from '../supabase';
+import { FetchAndDisplayData } from '../../app/utils/supabase';
 import DataSet from './dataSet';
 import Skeleton from './skeleton';
 
