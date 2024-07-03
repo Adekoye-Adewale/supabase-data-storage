@@ -1,5 +1,5 @@
 import React from 'react';
-import { supabase } from '../supabase/supabaseClient';
+import { supabase } from '@/app/utils/supabase';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 
