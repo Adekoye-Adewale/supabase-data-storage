@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
-import { UserAvatar as UserDP } from '@/components/supabase/fetchUser';
+import { UserAvatar as UserDP } from '@/app/utils/supabase/fetchUser';
 
 export const useUserProfile = () => {
     const [userProfile, setUserProfile] = useState(null);
