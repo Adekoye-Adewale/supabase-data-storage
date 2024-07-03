@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/components/supabase/supabaseClient';
+import { supabase } from '@/app/utils/supabase';
 import Modal from '@/components/notification/modal';
 import Link from 'next/link';
 
