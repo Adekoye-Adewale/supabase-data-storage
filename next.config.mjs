@@ -4,7 +4,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'adewaleimg.netlify.app',
+                hostname: 'ktsnrdglkwvgcmatevgt.supabase.co',
             },
         ],
       },
