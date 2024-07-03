@@ -12,6 +12,9 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      objectPosition: {
+        '50% 60%': '50% 60%',
+      }
     },
     fontFamily: {
       display: ['Inter', 'system-ui', 'sans-serif'],
