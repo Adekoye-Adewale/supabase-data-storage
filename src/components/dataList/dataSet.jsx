@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { FetchAndDisplayData, handleConfirmDelete, handleSaveData } from '../supabase';
+import { FetchAndDisplayData, handleConfirmDelete, handleSaveData } from '../../app/utils/supabase';
 import EditPopup from '@/components/dataList/editPopUp';
 import DeletePopUp from '@/components/dataList/deleteData';
 import { ToastContainer, toast } from 'react-toastify';
