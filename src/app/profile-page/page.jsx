@@ -15,7 +15,9 @@ export default function ProfilePage() {
     if (loading) {
         return (
             <div>
-                Profile Data is loading
+                <span className='m-auto text-3xl text-center font-bold'>
+                    Profile Data is loading
+                </span>
             </div>
         );
     }
@@ -25,7 +27,7 @@ export default function ProfilePage() {
             {userProfile ? (
                 <UserProfile profile={userProfile} />
             ) : (
-                <span>
+                <span className='m-auto text-3xl text-center font-bold'>
                     User needs to sign in
                 </span>
             )}
