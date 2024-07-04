@@ -21,7 +21,7 @@ export async function UserAvatar() {
         if (session) {
             const { data, error } = await supabase
                 .from('user_profiles')
-                .select('user_name, full_name, email, user_avatar, cover_img')
+                .select('user_name, full_name, email, phone_number, user_avatar, cover_img')
                 .eq('id', session.user.id)
                 .single();
 
