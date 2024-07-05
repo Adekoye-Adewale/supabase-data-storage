@@ -43,27 +43,27 @@ export default function DataSet() {
     };
 
     return (
-        <div>
+        <div className='w-full overflow-x-auto'>
             <ToastContainer />
             <table className="table-fixed border-separate border-spacing-2 border border-slate-500">
                 <thead className="text-left bg-cyan-900">
                     <tr>
-                        <th className="border border-slate-600 py-2 px-4 transition-all duration-300 hover:bg-cyan-600">
+                        <th className="table-head-column table-body-column">
                             id
                         </th>
-                        <th className="border border-slate-600 py-2 px-4 transition-all duration-300 hover:bg-cyan-600">
+                        <th className="table-head-column table-body-column">
                             Full Name
                         </th>
-                        <th className="border border-slate-600 py-2 px-4 transition-all duration-300 hover:bg-cyan-600">
+                        <th className="table-head-column table-body-column">
                             Email Address
                         </th>
-                        <th className="border border-slate-600 py-2 px-4 transition-all duration-300 hover:bg-cyan-600">
+                        <th className="table-head-column table-body-column">
                             Phone Number
                         </th>
-                        <th className="border border-slate-600 py-2 px-4 transition-all duration-300 hover:bg-cyan-600">
+                        <th className="table-head-column table-body-column">
                             Message
                         </th>
-                        <th className="border border-slate-600 py-2 px-4 transition-all duration-300 hover:bg-cyan-600">
+                        <th className="table-head-column table-body-column">
                             Actions
                         </th>
                     </tr>
@@ -71,12 +71,12 @@ export default function DataSet() {
                 <tbody>
                     {data.map((set) => (
                         <tr key={set.id}>
-                            <td className="border border-slate-700 py-2 px-4">{set.id}</td>
-                            <td className="border border-slate-700 py-2 px-4">{set.name}</td>
-                            <td className="border border-slate-700 py-2 px-4">{set.email}</td>
-                            <td className="border border-slate-700 py-2 px-4">{set.phoneNumber}</td>
-                            <td className="border border-slate-700 py-2 px-4">{set.message}</td>
-                            <td className="border border-slate-700 py-2 px-4">
+                            <td className="table-body-column">{set.id}</td>
+                            <td className="table-body-column">{set.name}</td>
+                            <td className="table-body-column">{set.email}</td>
+                            <td className="table-body-column">{set.phoneNumber}</td>
+                            <td className="table-body-column">{set.message}</td>
+                            <td className="table-body-column">
                                 <div className="flex gap-2 justify-center items-center">
                                     <svg
                                         onClick={() => handleEditClick(set)}
