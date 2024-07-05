@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer utilities {
-  .text-balance {
+  /* .text-balance {
     text-wrap: balance;
-  }
+  } */
 }
 
 :root {
@@ -32,13 +32,34 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+.table-head-column {
+  @apply transition-all duration-300 hover:bg-cyan-600;
+}
+.table-body-column {
+  @apply text-xs sm:text-base border border-slate-700 py-2 px-4;
+}
 tr, td{
   transition: all 350ms ease-in-out;
 }
 table:has(tr th:first-child:hover) td:first-child{
   background-color: var(--table-hover);
 }
-table:has(td:first-child:hover) td:first-child{
+table:has(tr th:nth-child(2):hover) td:nth-child(2){
+  background-color: var(--table-hover);
+}
+table:has(tr th:nth-child(3):hover) td:nth-child(3){
+  background-color: var(--table-hover);
+}
+table:has(tr th:nth-child(4):hover) td:nth-child(4){
+  background-color: var(--table-hover);
+}
+table:has(tr th:nth-child(5):hover) td:nth-child(5){
+  background-color: var(--table-hover);
+}
+table:has(tr th:nth-child(6):hover) td:nth-child(6){
+  background-color: var(--table-hover);
+}
+table:has(tbody td:first-child:hover) td:first-child{
   background-color: var(--table-hover);
 }
 table:has(td:nth-child(2):hover) td:nth-child(2){
@@ -59,7 +80,7 @@ table:has(td:nth-child(6):hover) td:nth-child(6){
 table:has(td:nth-child(7):hover) td:nth-child(7){
   background-color: var(--table-hover);
 }
-table:has(tr:first-child:hover) tr:first-child{
+table:has(tbody tr:first-child:hover) tr:first-child{
   background-color: var(--table-hover);
 }
 table:has(tr:nth-child(2):hover) tr:nth-child(2){
