@@ -6,37 +6,37 @@ import Skeleton from './skeleton';
 export default async function DataList() {
     
     const data = await FetchAndDisplayData();
+    const tableHead = [ 'id', 'Full Name', 'Email Address', 'Phone Number', 'Message', 'Edit' ]
     
     return (
         <>
-            <div>
+            <div className='w-full overflow-x-auto'>
                 <table className="table-fixed border-separate border-spacing-2 border border-slate-500">
-                    <thead className='text-left'>
+                    <thead className='text-left bg-cyan-900'>
                         <tr>
-                            <th className='border border-slate-600 py-2 px-4 transition-all duration-300 bg-cyan-900 hover:bg-cyan-600'>id</th>
-                            <th className='border border-slate-600 py-2 px-4 transition-all duration-300 bg-cyan-900 hover:bg-cyan-600'>Full Name</th>
-                            <th className='border border-slate-600 py-2 px-4 transition-all duration-300 bg-cyan-900 hover:bg-cyan-600'>Email Address</th>
-                            <th className='border border-slate-600 py-2 px-4 transition-all duration-300 bg-cyan-900 hover:bg-cyan-600'>Phone Number</th>
-                            <th className='border border-slate-600 py-2 px-4 transition-all duration-300 bg-cyan-900 hover:bg-cyan-600'>Message</th>
-                            <th className='border border-slate-600 py-2 px-4 transition-all duration-300 bg-cyan-900 hover:bg-cyan-600'>Edit</th>
+                            {tableHead.map((item) => (
+                                <th className='table-head-column table-body-column'>
+                                    {item}
+                                </th>
+                            ))}
                         </tr>
                     </thead>
                     <tbody>
                         {data.map((set) => (
                             <tr key={set.id}>
-                                <td className='border border-slate-700 py-2 px-4'>
+                                <td className='table-body-column'>
                                     {set.id}
                                 </td>
-                                <td className='border border-slate-700 py-2 px-4'>
+                                <td className='table-body-column'>
                                     {set.name}
                                 </td>
-                                <td className='border border-slate-700 py-2 px-4'>
+                                <td className='table-body-column'>
                                     {set.email}
                                 </td>
-                                <td className='border border-slate-700 py-2 px-4'>
+                                <td className='table-body-column'>
                                     {set.phoneNumber}
                                 </td>
-                                <td className='border border-slate-700 py-2 px-4'>
+                                <td className='table-body-column'>
                                     {set.message}
                                 </td>
                                 <td className='border border-slate-700 py-2 px-4 cursor-pointer text-center'>
