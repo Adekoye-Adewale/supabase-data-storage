@@ -18,7 +18,7 @@ export default function SiteHeader() {
                 <div className='hidden sm:flex'>
                     <NavMessage/>
                 </div>
-                <div>
+                <div className='sm:hidden flex'>
                     <MobileMenu/>
                 </div>
             </div>
