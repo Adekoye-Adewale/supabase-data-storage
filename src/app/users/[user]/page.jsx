@@ -1,6 +1,7 @@
 import React from 'react'
 import { createClientAll } from '@/app/utils/supabase/server'
 import { UserProfile } from '@/components/dashboard';
+import Link from 'next/link';
 
 export default async function Pages({ params }) {
     const { user } = params; 
