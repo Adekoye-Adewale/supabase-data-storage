@@ -24,8 +24,17 @@ export const createClientAll = async () => {
       },
     });
   
-    const { data, error } = await supabase.from('user_profiles').select('*');
-    return { data, error };
+    try {
+      const { data, error } = await supabase.from('user_profiles').select('*');
+      if (error) {
+          console.error('Error fetching user profiles:', error);
+          return { data: null, error };
+      }
+      return { data, error: null };
+    } catch (error) {
+        console.error('Unexpected error:', error);
+        return { data: null, error };
+    }
 };
 
 export const createClientSession = async () => {
