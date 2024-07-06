@@ -25,18 +25,18 @@ const ProfileHeader = ({ coverImg, dpImg, phoneNumber, fullName, userName, userM
             <div
                 className='overflow-hidden max-h-80'
             >
-                <Image {...coverImg} className='w-full h-80 object-cover object-[50% 60%]'/>                
+                <Image {...coverImg} className='w-full h-40 sm:h-80 object-cover object-[50% 60%]'/>                
             </div>
-            <div className='flex bg-white overflow-visible p-4 justify-between items-center'>
+            <div className='flex flex-col items-start sm:flex-row gap-4 sm:justify-between sm:items-center bg-white overflow-visible p-4'>
                 <div 
                     className='flex gap-4 items-center'
                 >
                     <Image 
                         {...dpImg} 
-                        className='w-40 h-40 rounded-full border-solid border-4 -mt-20 border-white shadow-lg'
+                        className='size-24 sm:size-40 rounded-full border-solid border-4 -mt-10 sm:-mt-20 border-white shadow-lg'
                     />
                     <div>
-                        <h2 className='text-black text-2xl font-semibold'>
+                        <h2 className='text-black text-lg sm:text-2xl font-semibold'>
                             {fullName}
                         </h2>
                         <p className='text-gray-500/45 text-xs font-semibold'>@{userName}</p>
