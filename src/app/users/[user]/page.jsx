@@ -15,7 +15,7 @@ export default async function Pages({ params }) {
                 <p>
                     {error}
                 </p>
-                <Link href="/users">
+                <Link href={`/users`}>
                     <a>Go to Users Page</a>
                 </Link>
             </div>
@@ -30,7 +30,7 @@ export default async function Pages({ params }) {
         return (
             <div>
                 <p>User doesn't exist.</p>
-                <Link href="/users">
+                <Link href={`/users`}>
                     <a>Go to Users Page</a>
                 </Link>
             </div>
