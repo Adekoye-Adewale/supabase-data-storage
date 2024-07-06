@@ -11,7 +11,7 @@ export default async function myAccountPage() {
     }
 
     return (
-        <main>
+        <main className='p-4'>
             <ProfilePageHeader 
                 {...data}
             />
