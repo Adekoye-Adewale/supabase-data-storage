@@ -21,7 +21,7 @@ const LogoutButton = () => {
     return (
         <button 
             onClick={handleLogout} 
-            className="flex gap-2 items-center text-white bg-red-600 border-solid border-2 border-red-600 px-4 py-2 rounded-md hover:text-red-600 hover:bg-white hover:border-red-600 transition-all duration-300"
+            className="danger-btn"
         >
             Logout
             <svg xmlns="https://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
