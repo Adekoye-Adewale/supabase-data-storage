@@ -14,8 +14,11 @@ export default async function DataList() {
                 <table className="table-fixed border-separate border-spacing-2 border border-slate-500">
                     <thead className='text-left bg-cyan-900'>
                         <tr>
-                            {tableHead.map((item) => (
-                                <th className='table-head-column table-body-column'>
+                            {tableHead.map((item, i) => (
+                                <th 
+                                    className='table-head-column table-body-column' 
+                                    key={i}
+                                >
                                     {item}
                                 </th>
                             ))}
