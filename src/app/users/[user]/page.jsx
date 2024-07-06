@@ -1,5 +1,5 @@
-import React from 'react'
-import { createClientAll } from '@/app/utils/supabase/server'
+import React from 'react';
+import { createClientAll } from '@/app/utils/supabase/server';
 import { UserProfile } from '@/components/dashboard';
 import Link from 'next/link';
 
@@ -8,7 +8,6 @@ export default async function Pages({ params }) {
     const { data, error } = await createClientAll();
 
     if (error) {
-        console.error('Error fetching data:', error);
         return (
             <div>
                 <p>Error loading user data.</p>
@@ -29,7 +28,7 @@ export default async function Pages({ params }) {
     if (!fetchUser) {
         return (
             <div>
-                <p>User doesn't exist.</p>
+                <p>User do not exist.</p>
                 <Link href={`/users`}>
                     <a>Go to Users Page</a>
                 </Link>
