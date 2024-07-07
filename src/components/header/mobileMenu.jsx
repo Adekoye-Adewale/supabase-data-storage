@@ -39,10 +39,10 @@ export default function MobileMenu() {
     const handleToggle = () => {
         if (open) {
             setTimeout(() => {
-                setOpen(true);
+                setOpen(false);
             }, 1000);
         } else {
-            setOpen(false);
+            setOpen(true);
         }
     };
 
