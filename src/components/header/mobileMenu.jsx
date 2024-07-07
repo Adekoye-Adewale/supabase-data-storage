@@ -37,9 +37,13 @@ export default function MobileMenu() {
     const transition = `transform 75ms linear 0ms`;
 
     const handleToggle = () => {
-        setTimeout(() => {
-            setOpen(!open);
-        }, 100);
+        if (!open) {
+            setTimeout(() => {
+                setOpen(true);
+            }, 1000);
+        } else {
+            setOpen(false);
+        }
     };
 
     return (
@@ -55,7 +59,7 @@ export default function MobileMenu() {
                         transition: transition, 
                     }
                 } 
-                className={`fixed top-0 left-0 right-auto bottom-0 w-10/12 h-screen bg-slate-800 py-5 px-4 z-10 transition-width delay-300 duration-300 sm:hidden ${open ? 'opacity-100' : 'opacity-0' }`}
+                className={`fixed top-0 left-0 right-auto bottom-0 w-10/12 h-screen bg-slate-800 py-5 px-4 z-10 transition-width transition-opacity delay-300 duration-300 sm:hidden ${open ? 'opacity-100' : 'opacity-0' }`}
             >
                 {open && <SideMenu />}
             </div>
