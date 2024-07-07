@@ -37,7 +37,7 @@ export default function MobileMenu() {
     const transition = `transform 75ms linear 0ms`;
 
     const handleToggle = () => {
-        if (!open) {
+        if (open) {
             setTimeout(() => {
                 setOpen(true);
             }, 1000);
