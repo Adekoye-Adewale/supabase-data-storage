@@ -1,50 +1,40 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Close from '@/icons/close'
 import Hamburger from '@/icons/hamburger'
 import Image from 'next/image';
-import Link from 'next/link';
+import TransitionLink from './transitionLink';
+import useToggle from './useToggle';
 
 const menu = [
     {
-        title: `Home`,
-        link: `/`,
-        icon: ``,
+        title: 'Home',
+        link: '/',
+        icon: '',
     },
     {
-        title: `User`,
-        link: `/user`,
-        icon: ``,
+        title: 'User',
+        link: '/users',
+        icon: '',
     },
     {
-        title: `Lists`,
-        link: `/list`,
-        icon: ``,
+        title: 'Lists',
+        link: '/list',
+        icon: '',
     },
     {
-        title: `Profile`,
-        link: `/profile-page`,
-        icon: ``,
+        title: 'Profile',
+        link: '/profile-page',
+        icon: '',
     },
 ]
 
 export default function MobileMenu() {
-
-    const [ open, setOpen ] = useState(false);
+    const [open, handleToggle] = useToggle(false);
 
     const menuWidth = open ? '85%' : '0px';
     const menuTranslateX = open ? 'translateX(0px)' : 'translateX(-50px)';
     const transition = `transform 75ms linear 0ms`;
-
-    const handleToggle = () => {
-        if (open) {
-            setTimeout(() => {
-                setOpen(false);
-            }, 1000);
-        } else {
-            setOpen(true);
-        }
-    };
 
     return (
         <>
@@ -52,24 +42,22 @@ export default function MobileMenu() {
                 {open ? <Close /> : <Hamburger />}
             </div>
             <div 
-                style={
-                    { 
-                        width: menuWidth, 
-                        transform: menuTranslateX, 
-                        transition: transition, 
-                    }
-                } 
-                className={`fixed top-0 left-0 right-auto bottom-0 w-10/12 h-screen bg-slate-800 py-5 px-4 z-10 transition-width transition-opacity delay-300 duration-300 sm:hidden ${open ? 'opacity-100' : 'opacity-0' }`}
+                style={{ 
+                    width: menuWidth, 
+                    transform: menuTranslateX, 
+                    transition: transition, 
+                }} 
+                className={`fixed top-0 left-0 right-auto bottom-0 w-10/12 h-screen bg-slate-800 py-5 px-4 z-10 transition-width transition-opacity delay-300 duration-300 sm:hidden ${open ? 'opacity-100' : 'opacity-0'}`}
             >
-                {open && <SideMenu />}
+                {open && <SideMenu handleToggle={handleToggle} open={open} />}
             </div>
         </>
-    )
+    );
 }
 
-export const SideMenu = ({userDP, userName, fullName, style}) => {
+export const SideMenu = ({ userDP, userName, fullName, open, handleToggle }) => {
     return (
-        <div style={style}>
+        <div>
             <div>
                 <div className='grid gap-2'>
                     <Image 
@@ -79,15 +67,17 @@ export const SideMenu = ({userDP, userName, fullName, style}) => {
                     <h2 className='text-lg font-bold text-white'>
                         {fullName}
                     </h2>
-                    <Link 
+                    <TransitionLink 
                         href={`user/${userName}`} 
                         title={userName}
+                        handleToggle={handleToggle} 
+                        open={open} 
                         className='text-xs text-white/60 font-extralight'
                     >
                         <span>
                             {userName}
                         </span>
-                    </Link>
+                    </TransitionLink>
                 </div>
                 <div>
                     ICON
@@ -96,23 +86,25 @@ export const SideMenu = ({userDP, userName, fullName, style}) => {
             <hr />
             <div>
                 <div className='grid gap-4'>
-                    {menu.map(( item, i ) => (
+                    {menu.map((item, i) => (
                         <div key={i} className='flex gap-2'>
                             <div>
                                 {item.icon}
                             </div>
-                            <Link 
+                            <TransitionLink 
                                 href={item.link} 
                                 title={item.title}
+                                handleToggle={handleToggle} 
+                                open={open}
                                 className='text-lg text-white font-medium'
                             >
                                 {item.title}
-                            </Link>
+                            </TransitionLink>
                         </div>
                     ))}
                 </div>
             </div>
-            <hr/>
+            <hr />
             <div>
                 Light mode - Dark mode
             </div>
