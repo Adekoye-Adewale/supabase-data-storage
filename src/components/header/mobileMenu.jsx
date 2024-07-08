@@ -5,6 +5,8 @@ import Hamburger from '@/icons/hamburger'
 import Image from 'next/image';
 import TransitionLink from './transitionLink';
 import useToggle from './useToggle';
+import LogoutButton from './logOutBtn';
+import DefaultAvatar from '@/icons/defaultAvatar';
 
 const menu = [
     {
@@ -29,7 +31,7 @@ const menu = [
     },
 ]
 
-export default function MobileMenu() {
+export default function MobileMenu({ user_avatar, user_name, full_name }) {
     const [open, handleToggle] = useToggle(false);
 
     const menuWidth = open ? '85%' : '0px';
@@ -41,15 +43,23 @@ export default function MobileMenu() {
             <div onClick={handleToggle}>
                 {open ? <Close /> : <Hamburger />}
             </div>
-            <div 
-                style={{ 
-                    width: menuWidth, 
-                    transform: menuTranslateX, 
-                    transition: transition, 
-                }} 
+            <div
+                style={{
+                    width: menuWidth,
+                    transform: menuTranslateX,
+                    transition: transition,
+                }}
                 className={`fixed top-0 left-0 right-auto bottom-0 w-10/12 h-screen bg-slate-800 py-5 px-4 z-10 transition-width transition-opacity delay-300 duration-300 sm:hidden ${open ? 'opacity-100' : 'opacity-0'}`}
             >
-                {open && <SideMenu handleToggle={handleToggle} open={open} />}
+                {open &&
+                    <SideMenu
+                        userDP={user_avatar}
+                        userName={user_name}
+                        fullName={full_name}
+                        handleToggle={handleToggle}
+                        open={open}
+                    />
+                }
             </div>
         </>
     );
@@ -58,24 +68,30 @@ export default function MobileMenu() {
 export const SideMenu = ({ userDP, userName, fullName, open, handleToggle }) => {
     return (
         <div>
-            <div>
-                <div className='grid gap-2'>
-                    <Image 
-                        {...userDP} 
+            <div className='flex gap-2 justify-between'>
+                <div className='grid gap-1'>
+                    {userDP ? 
+                        <Image
+                            {...userDP}
+                            className='size-10 rounded-full border border-sky-700'
+                        /> : <DefaultAvatar/> 
+                    }
+                    <Image
+                        {...userDP}
                         className='size-10 rounded-full border border-sky-700'
                     />
                     <h2 className='text-lg font-bold text-white'>
                         {fullName}
                     </h2>
-                    <TransitionLink 
-                        href={`user/${userName}`} 
+                    <TransitionLink
+                        href={`/users/${userName}`}
                         title={userName}
-                        handleToggle={handleToggle} 
-                        open={open} 
-                        className='text-xs text-white/60 font-extralight'
+                        handleToggle={handleToggle}
+                        open={open}
+                        className='text-xs text-white/60 font-extralight italic'
                     >
                         <span>
-                            {userName}
+                            @{userName.toLowerCase()}
                         </span>
                     </TransitionLink>
                 </div>
@@ -91,10 +107,10 @@ export const SideMenu = ({ userDP, userName, fullName, open, handleToggle }) => 
                             <div>
                                 {item.icon}
                             </div>
-                            <TransitionLink 
-                                href={item.link} 
+                            <TransitionLink
+                                href={item.link}
                                 title={item.title}
-                                handleToggle={handleToggle} 
+                                handleToggle={handleToggle}
                                 open={open}
                                 className='text-lg text-white font-medium'
                             >
@@ -106,8 +122,12 @@ export const SideMenu = ({ userDP, userName, fullName, open, handleToggle }) => 
             </div>
             <hr />
             <div>
+                <LogoutButton/>
+            </div>
+            <hr />
+            <div>
                 Light mode - Dark mode
             </div>
         </div>
-    )
+    );
 }
