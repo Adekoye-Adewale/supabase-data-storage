@@ -24,6 +24,7 @@
 }
 
 body {
+  transition: all 400ms ease-in-out 0ms;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -31,6 +32,11 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+.page-transition{
+  opacity: 0;
+  background: #000;
+  filter: blur(10px);
 }
 .table-head-column{
   @apply transition-all duration-300 hover:bg-cyan-600;
