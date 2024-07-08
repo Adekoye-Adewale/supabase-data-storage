@@ -14,7 +14,8 @@ const LogoutButton = () => {
             console.error('Logout error:', error);
         } else {
             toast.success('Logged out successfully.');
-            router.push('/login');
+            // router.push('/login');
+            location.reload();
         }
     };
 
