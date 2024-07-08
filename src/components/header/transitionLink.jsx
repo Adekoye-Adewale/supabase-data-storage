@@ -18,8 +18,9 @@ export default function TransitionLink({ children, href, handleToggle, open, ...
         router.push(href);
         await sleep(500);
         body.classList.remove('page-transition');
-        if (!open) {
+        if (open) {
             handleToggle();
+            console.log("running");
         }
     };
 
