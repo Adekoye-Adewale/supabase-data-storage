@@ -2,12 +2,12 @@ import React from 'react';
 import SiteLogo from './logo';
 import NavMessage from './navMessage';
 import NavMenu from './navMenu';
-import MobileMenu from './mobileMenu';
+import Mobile from './mobile';
 
 export default function SiteHeader() {
 
     return (
-        <header>
+        <header className='sticky top-0 w-full z-10'>
             <div 
                 className="flex justify-between items-center p-4 bg-gray-800 text-white"
             >
@@ -19,7 +19,7 @@ export default function SiteHeader() {
                     <NavMessage/>
                 </div>
                 <div className='sm:hidden flex'>
-                    <MobileMenu/>
+                    <Mobile/>
                 </div>
             </div>
         </header>
