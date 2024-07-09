@@ -40,7 +40,6 @@ const Login = () => {
 
             console.log('User:', user);
 
-            // Check if the user exists in user_profiles table
             const { data: profileData, error: profileError } = await supabase
                 .from('user_profiles')
                 .select('id')
@@ -49,7 +48,6 @@ const Login = () => {
 
             if (profileError) {
                 if (profileError.message === 'JSON object requested, multiple (or no) rows returned') {
-                    // User does not exist, redirect to login screen
                     console.error('User profile not found');
                     setModalMessage('User profile not found. Redirecting to login page...');
                     setModalSuccess(false);
@@ -107,12 +105,12 @@ const Login = () => {
                 return;
             }
 
-            setModalMessage('Login successful! Redirecting to home page...');
+            setModalMessage('Login successful! Redirecting to home page in 3sec...');
             setModalSuccess(true);
             setShowModal(true);
 
             setTimeout(() => {
-                router.push('/');
+                window.location.href = '/';
             }, 3000);
 
         } catch (err) {
