@@ -9,13 +9,13 @@ export default async function Pages({ params }) {
 
     if (error) {
         return (
-            <div>
+            <div className='grid place-content-center gap-2 text-center'>
                 <p>Error loading user data.</p>
                 <p>
                     {error}
                 </p>
                 <Link href={`/users`}>
-                    <a>Go to Users Page</a>
+                    Go to Users Page
                 </Link>
             </div>
         );
@@ -27,10 +27,19 @@ export default async function Pages({ params }) {
 
     if (!fetchUser) {
         return (
-            <div>
-                <p>User do not exist.</p>
-                <Link href={`/users`}>
-                    <a>Go to Users Page</a>
+            <div className='p-2 grid place-content-center gap-2 text-center'>
+                <div className='my-8'>
+                    <p 
+                        className='text-xl'
+                    >
+                        User '{user}' do not exist.
+                    </p>                    
+                </div>
+                <Link 
+                    href={`/users`} 
+                    className='text-base font-semibold text-sky-950 bg-slate-500 py-3 px-7 rounded-md hover:bg-slate-300 transition-all duration-300'
+                >
+                    Go to Users Page
                 </Link>
             </div>
         );
