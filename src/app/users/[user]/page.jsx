@@ -32,7 +32,7 @@ export default async function Pages({ params }) {
                     <p 
                         className='text-xl'
                     >
-                        User '{user}' do not exist.
+                        User {user} do not exist.
                     </p>                    
                 </div>
                 <Link 
