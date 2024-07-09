@@ -2,18 +2,18 @@
 import React from 'react';
 import MobileMenu from './mobileMenu';
 import { useFetchUserData } from '@/app/utils/supabase/useFetchUserData';
+import Hamburger from '@/icons/hamburger';
 
 export default function Mobile() {
-    
-    const { data, loading } = useFetchUserData();
+    const { data, loading, isLoggedIn } = useFetchUserData();
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Hamburger/>
     }
 
     return (
         <div>
-            <MobileMenu {...data} />
+            <MobileMenu {...data} isLoggedIn={isLoggedIn} />
         </div>
     );
 }
