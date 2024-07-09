@@ -6,6 +6,7 @@ import { UserData } from '.';
 export const useFetchUserData = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -14,6 +15,7 @@ export const useFetchUserData = () => {
 
                 if (userProfile) {
                     setData(userProfile);
+                    setIsLoggedIn(true);
                 } else {
                     setData({
                         user_name: '未登录',
@@ -21,6 +23,7 @@ export const useFetchUserData = () => {
                         email: '',
                         phone_number: '',
                     });
+                    setIsLoggedIn(false);
                 }
             } catch (error) {
                 console.error("Error fetching user:", error);
@@ -30,6 +33,7 @@ export const useFetchUserData = () => {
                     email: '',
                     phone_number: '',
                 });
+                setIsLoggedIn(false);
             } finally {
                 setLoading(false);
             }
@@ -38,5 +42,5 @@ export const useFetchUserData = () => {
         fetchData();
     }, []);
 
-    return { data, loading };
+    return { data, loading, isLoggedIn };
 };
