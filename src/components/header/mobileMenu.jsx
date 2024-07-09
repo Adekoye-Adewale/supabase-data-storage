@@ -3,6 +3,7 @@ import React from 'react'
 import Close from '@/icons/close'
 import Hamburger from '@/icons/hamburger'
 import Image from 'next/image';
+import Link from 'next/link';
 import TransitionLink from './transitionLink';
 import useToggle from './useToggle';
 import LogoutButton from './logOutBtn';
@@ -31,7 +32,7 @@ const menu = [
     },
 ]
 
-export default function MobileMenu({ user_avatar, user_name, full_name }) {
+export default function MobileMenu({ user_avatar, user_name, full_name, isLoggedIn }) {
     const [open, handleToggle] = useToggle(false);
 
     const menuWidth = open ? '85%' : '0px';
@@ -58,6 +59,7 @@ export default function MobileMenu({ user_avatar, user_name, full_name }) {
                         fullName={full_name}
                         handleToggle={handleToggle}
                         open={open}
+                        isLoggedIn={isLoggedIn}
                     />
                 }
             </div>
@@ -65,7 +67,7 @@ export default function MobileMenu({ user_avatar, user_name, full_name }) {
     );
 }
 
-export const SideMenu = ({ userDP, userName, fullName, open, handleToggle }) => {
+export const SideMenu = ({ userDP, userName, fullName, open, handleToggle, isLoggedIn }) => {
     return (
         <div>
             <div className='flex gap-2 justify-between'>
@@ -74,12 +76,8 @@ export const SideMenu = ({ userDP, userName, fullName, open, handleToggle }) => 
                         <Image
                             {...userDP}
                             className='size-10 rounded-full border border-sky-700'
-                        /> : <DefaultAvatar/> 
+                        /> : <DefaultAvatar/>
                     }
-                    <Image
-                        {...userDP}
-                        className='size-10 rounded-full border border-sky-700'
-                    />
                     <h2 className='text-lg font-bold text-white'>
                         {fullName}
                     </h2>
@@ -121,10 +119,28 @@ export const SideMenu = ({ userDP, userName, fullName, open, handleToggle }) => 
                 </div>
             </div>
             <hr />
-            <div>
-                <LogoutButton/>
-            </div>
-            <hr />
+            {/* {isLoggedIn && ( */}
+                <>
+                    <div>
+                        {isLoggedIn ? (
+                                <LogoutButton />
+                            ) : 
+                            (
+                                <TransitionLink
+                                    href={'/login'}
+                                    title={'My account'}
+                                    handleToggle={handleToggle}
+                                    open={open}
+                                    className='text-lg text-white font-medium'
+                                >
+                                    Login
+                                </TransitionLink>
+                            )
+                        }
+                    </div>
+                    <hr />
+                </>
+            {/* )} */}
             <div>
                 Light mode - Dark mode
             </div>
