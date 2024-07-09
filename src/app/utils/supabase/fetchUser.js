@@ -52,7 +52,7 @@ export async function UserData() {
 
         const { data, error } = await supabase
             .from('user_profiles')
-            .select('user_name, full_name, email, phone_number, user_avatar, cover_img')
+            .select('*')
             .eq('id', session.user.id)
             .single();
 
