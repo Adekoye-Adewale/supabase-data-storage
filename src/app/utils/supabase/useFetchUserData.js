@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
-import { UserData } from '@/app/utils/supabase';
+import { UserData } from '.';
+
 
 export const useFetchUserData = () => {
     const [data, setData] = useState(null);
