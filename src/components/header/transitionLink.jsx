@@ -13,15 +13,15 @@ export default function TransitionLink({ children, href, handleToggle, open, ...
     const handleTransition = async (e) => {
         e.preventDefault();
         const body = document.querySelector('body');
-        body.classList.add('page-transition');
-        await sleep(300);
-        router.push(href);
-        await sleep(500);
-        body.classList.remove('page-transition');
         if (open) {
             handleToggle();
             console.log("running");
         }
+        body.classList.add('page-transition');
+        await sleep(500);
+        router.push(href);
+        await sleep(500);
+        body.classList.remove('page-transition');
     };
 
     return (
