@@ -1,8 +1,9 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { FetchAndDisplayData, handleConfirmDelete, handleSaveData } from '../../app/utils/supabase';
+import { FetchAndDisplayData, handleConfirmDelete, handleSaveData, handleAddData} from '../../app/utils/supabase';
 import EditPopup from '@/components/dataList/editPopUp';
 import DeletePopUp from '@/components/dataList/deleteData';
+import AddDataPopup from './AddDataPopup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -10,6 +11,7 @@ export default function DataSet() {
     const [data, setData] = useState([]);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
+    const [isAddPopupOpen, setIsAddPopupOpen] = useState(false);
     const [selectedData, setSelectedData] = useState(null);
     const [dataToDelete, setDataToDelete] = useState(null);
 
@@ -40,6 +42,14 @@ export default function DataSet() {
     const handleCloseDeletePopup = () => {
         setIsDeletePopupOpen(false);
         setDataToDelete(null);
+    };
+
+    const handleAddClick = () => {
+        setIsAddPopupOpen(true);
+    };
+
+    const handleCloseAddPopup = () => {
+        setIsAddPopupOpen(false);
     };
 
     return (
@@ -114,6 +124,12 @@ export default function DataSet() {
                     ))}
                 </tbody>
             </table>
+            <button
+                onClick={handleAddClick}
+                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+            >
+                Add Data
+            </button>
             {isPopupOpen && selectedData && (
                 <EditPopup
                     data={selectedData}
@@ -123,8 +139,14 @@ export default function DataSet() {
             )}
             {isDeletePopupOpen && (
                 <DeletePopUp
-                onConfirm={() => handleConfirmDelete(dataToDelete, setData, setIsDeletePopupOpen)}
-                onCancel={handleCloseDeletePopup}
+                    onConfirm={() => handleConfirmDelete(dataToDelete, setData, setIsDeletePopupOpen)}
+                    onCancel={handleCloseDeletePopup}
+                />
+            )}
+            {isAddPopupOpen && (
+                <AddDataPopup
+                    onClose={handleCloseAddPopup}
+                    onSave={(newData) => handleAddData(newData, setData)}
                 />
             )}
         </div>
