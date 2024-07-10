@@ -69,9 +69,9 @@ export default function MobileMenu({ user_avatar, user_name, full_name, isLogged
 
 export const SideMenu = ({ userDP, userName, fullName, open, handleToggle, isLoggedIn }) => {
     return (
-        <div>
+        <div className='grid gap-4 h-full'>
             <div className='flex gap-2 justify-between'>
-                <div className='grid gap-1'>
+                <div className='grid gap-1 content-baseline'>
                     {userDP ? 
                         <Image
                             {...userDP}
@@ -119,31 +119,29 @@ export const SideMenu = ({ userDP, userName, fullName, open, handleToggle, isLog
                 </div>
             </div>
             <hr />
-            {/* {isLoggedIn && ( */}
-                <>
-                    <div>
-                        {isLoggedIn ? (
-                                <LogoutButton />
-                            ) : 
-                            (
-                                <TransitionLink
-                                    href={'/login'}
-                                    title={'My account'}
-                                    handleToggle={handleToggle}
-                                    open={open}
-                                    className='text-lg text-white font-medium'
-                                >
-                                    Login
-                                </TransitionLink>
-                            )
-                        }
-                    </div>
-                    <hr />
-                </>
-            {/* )} */}
-            <div>
-                Light mode - Dark mode
-            </div>
+            <div className='flex flex-col justify-end gap-2'>
+                <div>
+                    {isLoggedIn ? (
+                            <LogoutButton />
+                        ) : 
+                        (
+                            <TransitionLink
+                                href={'/login'}
+                                title={'My account'}
+                                handleToggle={handleToggle}
+                                open={open}
+                                className='text-lg text-white font-medium'
+                            >
+                                Login
+                            </TransitionLink>
+                        )
+                    }
+                </div>
+                <hr />
+                <div>
+                    Light mode - Dark mode
+                </div>
+            </div>            
         </div>
     );
 }
