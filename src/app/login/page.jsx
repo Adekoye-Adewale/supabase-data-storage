@@ -122,7 +122,7 @@ const Login = () => {
     };
 
     return (
-        <>
+        <main className='px-4 py-10'>
             <form onSubmit={handleLogin} className="border border-gray-900/10 p-8 rounded-md bg-slate-50 max-w-screen-md w-full m-auto">
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
                     <div className="col-span-3 sm:col-span-full">
@@ -173,7 +173,7 @@ const Login = () => {
                 onClose={() => setShowModal(false)}
                 success={modalSuccess}
             />
-        </>
+        </main>
     );
 }
 
