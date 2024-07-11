@@ -7,7 +7,7 @@ export const FetchUserProfile = async () => {
         .single();
 
     if (error) {
-        console.error('Error fetching user profile:', error);
+        // console.error('Error fetching user profile:', error);
         return null;
     }
 
@@ -32,7 +32,7 @@ export async function UserAvatar() {
             userProfile = data;
         }
     } catch (error) {
-        console.error('Error fetching user data:', error);
+        // console.error('Error fetching user data:', error);
     }
     
     return userProfile;
@@ -62,7 +62,7 @@ export async function UserData() {
 
         return data;
     } catch (error) {
-        console.error('Error fetching user data:', error);
+        // console.error('Error fetching user data:', error);
         return null;
     }
 }
