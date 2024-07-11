@@ -6,6 +6,8 @@ import DeletePopUp from '@/components/dataList/deleteData';
 import AddDataPopup from './AddDataPopup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useFetchUserData } from '@/app/utils/supabase/useFetchUserData';
+import Skeleton from './skeleton';
 
 export default function DataSet() {
     const [data, setData] = useState([]);
@@ -14,6 +16,8 @@ export default function DataSet() {
     const [isAddPopupOpen, setIsAddPopupOpen] = useState(false);
     const [selectedData, setSelectedData] = useState(null);
     const [dataToDelete, setDataToDelete] = useState(null);
+
+    const { loading, isLoggedIn } = useFetchUserData();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -52,9 +56,28 @@ export default function DataSet() {
         setIsAddPopupOpen(false);
     };
 
+    if(loading) {
+        return (
+            <Skeleton/>
+        )
+    }
+
     return (
         <div className='w-full overflow-x-auto'>
             <ToastContainer />
+            <div className="flex justify-end py-4">
+                {isLoggedIn ? (
+                    <button
+                        onClick={handleAddClick}
+                        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+                    >
+                        Add Data
+                    </button>
+                ) : (
+                    <></>
+                )}
+            </div>
+            
             <table className="table-fixed border-separate border-spacing-2 border border-slate-500">
                 <thead className="text-left bg-cyan-900">
                     <tr>
@@ -73,9 +96,12 @@ export default function DataSet() {
                         <th className="table-head-column table-body-column">
                             Message
                         </th>
-                        <th className="table-head-column table-body-column">
-                            Actions
-                        </th>
+                        {isLoggedIn ? (
+                                <th className="table-head-column table-body-column">
+                                Actions
+                                </th>
+                            ) : ''
+                        }
                     </tr>
                 </thead>
                 <tbody>
@@ -86,7 +112,8 @@ export default function DataSet() {
                             <td className="table-body-column">{set.email}</td>
                             <td className="table-body-column">{set.phoneNumber}</td>
                             <td className="table-body-column">{set.message}</td>
-                            <td className="table-body-column">
+                            {isLoggedIn ? (
+                                <td className="table-body-column">
                                 <div className="flex gap-2 justify-center items-center">
                                     <svg
                                         onClick={() => handleEditClick(set)}
@@ -119,17 +146,15 @@ export default function DataSet() {
                                         />
                                     </svg>
                                 </div>
-                            </td>
+                                </td>
+                                ) : ''
+                            }
+                            
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <button
-                onClick={handleAddClick}
-                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
-            >
-                Add Data
-            </button>
+            
             {isPopupOpen && selectedData && (
                 <EditPopup
                     data={selectedData}
