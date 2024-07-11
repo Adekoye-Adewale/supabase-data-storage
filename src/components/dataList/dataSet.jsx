@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useFetchUserData } from '@/app/utils/supabase/useFetchUserData';
 import Skeleton from './skeleton';
+import TableDownloadButton from './tableDownloadBTN';
 
 export default function DataSet() {
     const [data, setData] = useState([]);
@@ -65,17 +66,20 @@ export default function DataSet() {
     return (
         <div className='w-full overflow-x-auto'>
             <ToastContainer />
-            <div className="flex justify-end py-4">
+            <div className="flex justify-end content-center gap-2 py-4">
                 {isLoggedIn ? (
                     <button
                         onClick={handleAddClick}
-                        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
                     >
                         Add Data
                     </button>
                 ) : (
                     <></>
                 )}
+                <TableDownloadButton 
+                    data={data}
+                />
             </div>
             
             <table className="table-fixed border-separate border-spacing-2 border border-slate-500">
