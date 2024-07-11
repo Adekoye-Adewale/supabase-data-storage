@@ -7,7 +7,7 @@ export const FetchUserProfile = async () => {
         .single();
 
     if (error) {
-        console.error('Error fetching user profile:', error);
+        // console.error('Error fetching user profile:', error);
         return null;
     }
 
