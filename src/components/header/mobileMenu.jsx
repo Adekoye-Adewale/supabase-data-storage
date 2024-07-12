@@ -16,7 +16,7 @@ const menu = [
         icon: '',
     },
     {
-        title: 'User',
+        title: 'Users',
         link: '/users',
         icon: '',
     },
