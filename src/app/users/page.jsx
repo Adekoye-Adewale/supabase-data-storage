@@ -39,7 +39,7 @@ const UserCard = ({ img, userName, fullName, email, phoneNumber}) => {
     return (
         <div>
             <Link 
-                href={`/${userName}`} 
+                href={`/users/${userName}`} 
                 title={userName}
                 className='flex gap-2 rounded-md shadow-md w-full max-w-[400px] p-5 bg-gray-800 hover:bg-sky-700 transition-all duration-300'
             >
