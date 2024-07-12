@@ -49,12 +49,13 @@ const TableDownloadButton = ({ data }) => {
       >
         Download Data
       </button>
-      <div className={`absolute  w-32 text-black bg-white shadow-lg rounded hidden group-hover:block`}>
-        <ul className="list-none p-0 m-0">
-          <li className="p-2 hover:bg-gray-200 cursor-pointer" onClick={exportToExcel}>
+      <div className={`absolute  w-full text-black bg-white shadow-lg rounded overflow-hidden hidden group-hover:block`}>
+        <ul className="text-sm list-none p-0 m-0">
+          <li className="p-2 hover:bg-gray-200 cursor-pointer transition-all duration-300r" onClick={exportToExcel}>
             Download Excel
           </li>
-          <li className="p-2 hover:bg-gray-200 cursor-pointer" onClick={exportToPDF}>
+          <hr className='w-11/12 mx-auto text-slate-500/60'/>
+          <li className="p-2 hover:bg-gray-200 cursor-pointer transition-all duration-300" onClick={exportToPDF}>
             Download PDF
           </li>
         </ul>
