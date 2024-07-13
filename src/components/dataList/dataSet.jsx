@@ -66,7 +66,7 @@ export default function DataSet() {
     return (
         <div className='w-full overflow-x-auto'>
             <ToastContainer />
-            <div className="flex justify-end content-center gap-2 py-4">
+            <div className="flex sm:justify-end content-center gap-2 py-4">
                 {isLoggedIn ? (
                     <button
                         onClick={handleAddClick}
@@ -82,7 +82,7 @@ export default function DataSet() {
                 />
             </div>
             
-            <table className="table-fixed border-separate border-spacing-2 border border-slate-500">
+            <table className="table-fixed 2xl:w-full 2xl:table-auto border-separate border-spacing-2 border border-slate-500">
                 <thead className="text-left bg-cyan-900">
                     <tr>
                         <th className="table-head-column table-body-column">
