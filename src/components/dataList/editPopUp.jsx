@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function EditPopup({ data, onClose, onSave }) {
+function EditPopup({ data, onClose, onSave, isAdmin }) {
     const [formData, setFormData] = useState(data);
 
     const handleChange = (e) => {
@@ -20,7 +20,14 @@ function EditPopup({ data, onClose, onSave }) {
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur">
             <div className="bg-white text-gray-700 p-4 rounded shadow-lg w-full max-w-lg">
-                <h2 className="text-lg text-black font-bold mb-4">Edit Data</h2>
+                <h2 className="text-lg sm:text-2xl font-semibold mb-4 text-sky-900">
+                    Edit Data
+                </h2>
+                {isAdmin && (
+                    <h3 className="text-lg sm:text-xl font-bold mb-4 text-black">
+                        Editing Data as Admin
+                    </h3>
+                )}         
                 <form onSubmit={handleSubmit}>
                     <label className="block mb-2 text-slate-950">
                         Full Name:

@@ -1,46 +1,40 @@
-'use client'
 import { useState, useEffect } from 'react';
-import { UserData } from '.';
-
+import supabase from './client';
 
 export const useFetchUserData = () => {
-    const [data, setData] = useState(null);
+    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const userProfile = await UserData();
-
-                if (userProfile) {
-                    setData(userProfile);
-                    setIsLoggedIn(true);
-                } else {
-                    setData({
-                        user_name: '未登录',
-                        full_name: 'User not logged in',
-                        email: '',
-                        phone_number: '',
-                    });
-                    setIsLoggedIn(false);
-                }
-            } catch (error) {
-                console.error("Error fetching user:", error);
-                setData({
-                    user_name: '未登录',
-                    full_name: 'Error fetching user data',
-                    email: '',
-                    phone_number: '',
-                });
-                setIsLoggedIn(false);
-            } finally {
+        const fetchUser = async () => {
+            const { data, error } = await supabase.auth.getSession();
+            if (error) {
+                console.error('Error fetching user:', error);
                 setLoading(false);
+                return;
             }
+
+            if (data.session) {
+                const { user } = data.session;
+                const { data: userData, error: userError } = await supabase
+                    .from('user_profiles')
+                    .select('id, role_id')
+                    .eq('id', user.id)
+                    .single();
+
+                if (userError) {
+                    console.error('Error fetching user data:', userError);
+                } else {
+                    setUser(userData);
+                    setIsLoggedIn(true);
+                }
+            }
+            setLoading(false);
         };
 
-        fetchData();
+        fetchUser();
     }, []);
 
-    return { data, loading, isLoggedIn };
+    return { loading, isLoggedIn, user };
 };

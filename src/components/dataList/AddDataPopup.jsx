@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const AddDataPopup = ({ onClose, onSave }) => {
+const AddDataPopup = ({ onClose, onSave, userId }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         phoneNumber: '',
         message: '',
+        user_id: userId,
     });
     const [error, setError] = useState(null);
     
@@ -77,6 +78,11 @@ const AddDataPopup = ({ onClose, onSave }) => {
                             className="w-full p-2 border border-gray-300 rounded"
                         ></textarea>
                     </div>
+                    <input
+                        type="hidden"
+                        name="user_id"
+                        value={formData.user_id}
+                    />
                     <div className="flex justify-end gap-4">
                         <button
                             type="button"

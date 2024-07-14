@@ -1,12 +1,20 @@
 import supabase from "./client";
 import { toast } from 'react-toastify';
 
-export const handleAddData = async (newData, setData) => {
-    const { name, email, phoneNumber, message } = newData;
+export const handleAddData = async (newData, setData, user) => {
+    newData.user_id = user.id;
     try {
         const { data, error } = await supabase
             .from('Test Table')
-            .insert([{ name, email, phoneNumber, message }]);
+            .insert([
+                { 
+                    name: newData.name,
+                    email: newData.email,
+                    phoneNumber: newData.phoneNumber,
+                    message: newData.message,
+                    user_id: newData.user_id,
+                }
+            ]);
 
         console.log('Supabase insert response:', { data, error });
 

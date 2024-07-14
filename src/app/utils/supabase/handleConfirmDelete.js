@@ -2,20 +2,24 @@ import { supabase } from '@/app/utils/supabase';
 import { toast } from 'react-toastify';
 
 export const handleConfirmDelete = async (dataToDelete, setData, setIsDeletePopupOpen) => {
-    const { error } = await supabase
+
+    if (user.role_id !== 1) {
+        toast.error("You don't have permission to delete this data");
+        return;
+    }
+
+    const { id } = dataToDelete;
+    const { data, error } = await supabase
         .from('Test Table')
         .delete()
-        .eq('id', dataToDelete.id);
+        .eq('id', id);
 
     if (error) {
         console.error('Error deleting data:', error);
         toast.error('Failed to delete data.');
-        return;
+    } else {
+        setData((prevData) => prevData.filter((item) => item.id !== id));
+        toast.success('Data deleted successfully.');
     }
-
-    setData((prevData) => 
-        prevData.filter((item) => 
-            item.id !== dataToDelete.id));
     setIsDeletePopupOpen(false);
-    toast.success('Data deleted successfully.');
 };
