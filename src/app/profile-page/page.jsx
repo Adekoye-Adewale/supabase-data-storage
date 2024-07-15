@@ -1,15 +1,13 @@
 'use client';
 import React from 'react';
 import { UserProfile } from '@/components/dashboard';
-import { useUserProfile } from '../hooks/useUserProfile';
 import { useFetchUserData } from '../utils/supabase/useFetchUserData';
 import Link from 'next/link';
 
 export default function ProfilePage() {
 
-    // const { userProfile, loading } = useUserProfile();
-    const { data, loading, isLoggedIn } = useFetchUserData();
-    
+    const { user, loading, isLoggedIn } = useFetchUserData();
+
     if (loading) {
         return (
             <div>
@@ -23,7 +21,7 @@ export default function ProfilePage() {
     return (
         <main>
             {isLoggedIn ? (
-                <UserProfile profile={data} />
+                <UserProfile profile={user} />
             ) : (
                 <div className='p-2 w-full min-h-[500px] grid place-content-center gap-2 text-center'>
                     <span className='m-auto text-3xl text-center font-bold'>
