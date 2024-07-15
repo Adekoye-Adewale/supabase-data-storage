@@ -19,7 +19,7 @@ export const useFetchUserData = () => {
                 const { user } = data.session;
                 const { data: userData, error: userError } = await supabase
                     .from('user_profiles')
-                    .select('id, role_id')
+                    .select('*')
                     .eq('id', user.id)
                     .single();
 
