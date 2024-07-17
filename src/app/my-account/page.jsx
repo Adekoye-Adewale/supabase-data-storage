@@ -9,12 +9,12 @@ export default async function myAccountPage() {
 
     if (error) {
         return (
-            <div>
-                <span className='m-auto text-3xl text-center font-bold'>
+            <div className='grid place-content-center gap-4 p-8 m-auto w-full min-h-screen'>
+                <span className='text-3xl text-center font-bold'>
                     Something went wrong while fetching user data: {error.message}
                 </span>
-                <div>
-                    <Link href={'/login'} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded-sm'>
+                <div className='mx-auto my-4'>
+                    <Link href={'/login'} className='m-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded-sm'>
                         Login
                     </Link>
                 </div>
@@ -23,7 +23,7 @@ export default async function myAccountPage() {
     }
 
     return (
-        <main className='p-4'>
+        <main>
             <ProfilePageHeader 
                 {...data}
             />
