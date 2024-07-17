@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/app/utils/supabase';
 import Modal from '@/components/notification/modal';
+import Link from 'next/link';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -124,8 +125,8 @@ const Login = () => {
     return (
         <main className='px-4 py-10'>
             <form onSubmit={handleLogin} className="border border-gray-900/10 p-8 rounded-md bg-slate-50 max-w-screen-md w-full m-auto">
-                <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
-                    <div className="col-span-3 sm:col-span-full">
+                <span className="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
+                    <span className="col-span-3 sm:col-span-full">
                         <label 
                             htmlFor="email" 
                             className="text-base font-semibold leading-7 text-gray-900"
@@ -140,8 +141,8 @@ const Login = () => {
                             required 
                             className="block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
-                    </div>
-                    <div className="col-span-3 sm:col-span-full">
+                    </span>
+                    <span className="col-span-3 sm:col-span-full">
                         <label 
                             htmlFor="password" 
                             className="text-base font-semibold leading-7 text-gray-900"
@@ -156,16 +157,24 @@ const Login = () => {
                             required  
                             className="block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
-                    </div>
+                    </span>
                     
-                    <button 
-                        type="submit" 
-                        className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3 rounded-md cursor-pointer"
-                    >
-                        Login
-                    </button>
-                </div>
-                
+                    <span className='flex gap-2 justify-end items-center col-span-full'>
+                        <button 
+                            type="submit" 
+                            className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3 rounded-md cursor-pointer"
+                        >
+                            Login
+                        </button>
+
+                        <Link  
+                            href={'/signup'}
+                            className=" text-sky-800 underline cursor-pointer"
+                        >
+                            Create account
+                        </Link>
+                    </span>                    
+                </span>                
             </form>
             <Modal
                 show={showModal}
