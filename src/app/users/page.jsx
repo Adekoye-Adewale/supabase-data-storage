@@ -26,6 +26,7 @@ export default async function UsersPage() {
                             fullName={user.full_name} 
                             email={user.email} 
                             phoneNumber={user.phone_number}
+role={user.role}
                         />
                     </div>
                 ))}
@@ -35,7 +36,7 @@ export default async function UsersPage() {
 }
 
 
-const UserCard = ({ img, userName, fullName, email, phoneNumber}) => {
+const UserCard = ({ img, userName, fullName, email, phoneNumber, role}) => {
     return (
         <div>
             <Link 
@@ -50,7 +51,7 @@ const UserCard = ({ img, userName, fullName, email, phoneNumber}) => {
                             {fullName}
                         </h3>
                         <span className='text-[8px] italic'>
-                            @{userName}
+                            @{userName} {role}
                         </span>
                     </div>
                     <div className='flex gap-2'>
