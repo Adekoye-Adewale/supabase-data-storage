@@ -65,6 +65,7 @@ export default async function Pages({ params }) {
         );
     }
 
+    const postCount = postData.length;
     const noPost = postData.length === 0;
 
     return (
@@ -72,38 +73,42 @@ export default async function Pages({ params }) {
             <UserProfile 
                 profile={fetchUser}
             />
-            {noPost ? (
-                <div className='p-2 grid place-content-center gap-2 text-center'>
-                    <div className='my-8'>
-                        <p className='text-xl'>
-                            User has no post yet
-                        </p>
-                    </div>
-                </div>
-            ) : (
+            <div className='py-10 px-5'>
                 <div>
-                    {postData.map( ( post, i ) => (
-                        <div key={i} className='grid gap-2 text-left p-5 border'>
-                            <p>
-                                post user name: {post.name}
-                            </p>
-                            <p>
-                                post user email: {post.email}
-                            </p>
-                            <p>
-                                post user phone number: {post.phoneNumber}
-                            </p>
-                            <p>
-                                post user message: {post.message}
-                            </p>
-                            <p>
-                                post date: {post.created_at}
+                    {postCount === 1 ? '1 post' : postCount > 1 ? `${postCount} posts` : ''} 
+                </div>
+                {noPost ? (
+                    <div className='p-2 grid place-content-center gap-2 text-center'>
+                        <div className='my-8'>
+                            <p className='text-xl'>
+                                User has no post yet
                             </p>
                         </div>
-                    ))}
-                </div>
-            )}
-            
+                    </div>
+                ) : (
+                    <div className='grid gap-5'>
+                        {postData.map( ( post, i ) => (
+                            <div key={i} className='grid gap-2 text-left p-5 border rounded-2xl'>
+                                <p>
+                                    post user name: {post.name}
+                                </p>
+                                <p>
+                                    post user email: {post.email}
+                                </p>
+                                <p>
+                                    post user phone number: {post.phoneNumber}
+                                </p>
+                                <p>
+                                    post user message: {post.message}
+                                </p>
+                                <p>
+                                    post date: {post.created_at}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>            
         </div>
     )
 }
