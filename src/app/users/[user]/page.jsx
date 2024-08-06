@@ -74,7 +74,7 @@ export default async function Pages({ params }) {
                 profile={fetchUser}
             />
             <div className='py-10 px-5'>
-                <div>
+                <div className='p-2 grid place-content-center gap-2 text-center my-8 text-lg font-semibold'>
                     {postCount === 1 ? '1 post' : postCount > 1 ? `${postCount} posts` : ''} 
                 </div>
                 {noPost ? (
