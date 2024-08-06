@@ -2,6 +2,7 @@ import React from 'react';
 import { createClientAll } from '@/app/utils/supabase/server';
 import { UserProfile } from '@/components/dashboard';
 import Link from 'next/link';
+import { supabase } from '@/app/utils/supabase';
 
 export default async function Pages({ params }) {
     const { user } = params; 
@@ -25,6 +26,25 @@ export default async function Pages({ params }) {
         (info) => info.user_name.toLowerCase() === user.toLowerCase()
     );
 
+    const { data: postData, error: postError } = await supabase
+        .from('Test Table')
+        .select('*')
+        .eq('user_id', fetchUser.id);
+    
+    if (postError) {
+        return (
+            <div className='grid place-content-center gap-2 text-center'>
+                <p>Error loading user posts.</p>
+                <p>
+                    {error}
+                </p>
+                <Link href={`/users`}>
+                    Go to Users Page
+                </Link>
+            </div>
+        );
+    }
+
     if (!fetchUser) {
         return (
             <div className='p-2 grid place-content-center gap-2 text-center'>
@@ -45,11 +65,45 @@ export default async function Pages({ params }) {
         );
     }
 
+    const noPost = postData.length === 0;
+
     return (
         <div>
             <UserProfile 
                 profile={fetchUser}
             />
+            {noPost ? (
+                <div className='p-2 grid place-content-center gap-2 text-center'>
+                    <div className='my-8'>
+                        <p className='text-xl'>
+                            User has no post yet
+                        </p>
+                    </div>
+                </div>
+            ) : (
+                <div>
+                    {postData.map( ( post, i ) => (
+                        <div key={i} className='grid gap-2 text-left p-5 border'>
+                            <p>
+                                post user name: {post.name}
+                            </p>
+                            <p>
+                                post user email: {post.email}
+                            </p>
+                            <p>
+                                post user phone number: {post.phoneNumber}
+                            </p>
+                            <p>
+                                post user message: {post.message}
+                            </p>
+                            <p>
+                                post date: {post.created_at}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            )}
+            
         </div>
     )
 }
