@@ -89,21 +89,29 @@ export default async function Pages({ params }) {
                     <div className='grid gap-5'>
                         {postData.map( ( post, i ) => (
                             <div key={i} className='grid gap-2 text-left p-5 border rounded-2xl'>
-                                <p>
-                                    post user name: {post.name}
-                                </p>
-                                <p>
-                                    post user email: {post.email}
-                                </p>
-                                <p>
-                                    post user phone number: {post.phoneNumber}
-                                </p>
-                                <p>
-                                    post user message: {post.message}
-                                </p>
-                                <p>
-                                    post date: {post.created_at}
-                                </p>
+                                <div className='text-3xl font-bold'>
+                                    <p>
+                                        {post.name}
+                                    </p>
+                                </div>
+                                <div className='text-base font-normal'>
+                                    <p>
+                                        {post.message}
+                                    </p>
+                                </div>
+                                <div className='flex gap-4'>
+                                    <p  className='text-xs font-normal'>
+                                        post user email: {post.email}
+                                    </p>
+                                    <p  className='text-xs font-normal'>
+                                        post user phone number: {post.phoneNumber}
+                                    </p>
+                                </div>
+                                <div>
+                                    <p>
+                                        {post.created_at}
+                                    </p>
+                                </div>
                             </div>
                         ))}
                     </div>
