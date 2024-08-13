@@ -86,34 +86,49 @@ export default async function Pages({ params }) {
                         </div>
                     </div>
                 ) : (
-                    <div className='grid gap-5'>
-                        {postData.map( ( post, i ) => (
-                            <div key={i} className='grid gap-2 text-left p-5 border rounded-2xl'>
-                                <div className='text-3xl font-bold'>
-                                    <p>
-                                        {post.name}
-                                    </p>
+                        <div className='grid gap-5 grid-cols-2 sm:grid-cols-3'>
+                        {postData.map( ( post, i ) => {
+
+                            const date = new Date(post.created_at);
+                            let formattedDate = date.toLocaleString('en-US', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric',
+                                hour: 'numeric',
+                                minute: 'numeric',
+                                hour12: true
+                            });
+
+                            formattedDate = formattedDate.replace('AM', 'am').replace('PM', 'pm');
+
+                            return(
+                                <div key={i} className='grid gap-2 text-left p-5 border rounded-2xl'>
+                                    <div className='text-3xl font-bold'>
+                                        <p>
+                                            {post.name}
+                                        </p>
+                                    </div>
+                                    <div className='text-base font-normal'>
+                                        <p>
+                                            {post.message}
+                                        </p>
+                                    </div>
+                                    <div className='flex gap-4'>
+                                        <p  className='text-xs font-normal italic'>
+                                            {post.email}
+                                        </p>
+                                        <p className='text-xs font-normal italic'>
+                                            {post.phoneNumber}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p className='text-xs font-light text-white/70'>
+                                                {formattedDate}
+                                        </p>
+                                    </div>
                                 </div>
-                                <div className='text-base font-normal'>
-                                    <p>
-                                        {post.message}
-                                    </p>
-                                </div>
-                                <div className='flex gap-4'>
-                                    <p  className='text-xs font-normal'>
-                                        post user email: {post.email}
-                                    </p>
-                                    <p  className='text-xs font-normal'>
-                                        post user phone number: {post.phoneNumber}
-                                    </p>
-                                </div>
-                                <div>
-                                    <p>
-                                        {post.created_at}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
+                            )
+                        })}
                     </div>
                 )}
             </div>            
