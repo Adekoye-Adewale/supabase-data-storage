@@ -96,7 +96,7 @@ export default async function Pages({ params }) {
                                 year: 'numeric',
                                 hour: 'numeric',
                                 minute: 'numeric',
-                                hour12: true
+                                hour12: true,
                             });
 
                             formattedDate = formattedDate.replace('AM', 'am').replace('PM', 'pm');
