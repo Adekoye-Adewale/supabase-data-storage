@@ -38,6 +38,34 @@ export default function ProfilePage() {
                 </div>
                 
             )}
+            <div>
+                <form action="">
+                    <span>
+                        <label htmlFor="name">Your Name</label>
+                        <input type="text" name="name" placeholder="Full Name"/>
+                    </span>
+
+                    <span>
+                        <label htmlFor="userName">User Name</label>
+                        <input type="text" name="userName" placeholder="User Name" />
+                    </span>
+
+                    <span>
+                        <label htmlFor="email">Email</label>
+                        <input type="email" name="email" placeholder="sample@email.com" />
+                    </span>
+
+                    <span>
+                        <label htmlFor="phoneNumber">Phone Number</label>
+                        <input type="tel" name="phoneNumber" id="phoneNumber" />
+                    </span>
+
+                    <span>
+                        <label htmlFor="userAvartar">User Avartar</label>
+                        <input type="url" name="userAvartar" id="userAvartar" />
+                    </span>
+                </form>
+            </div>
         </main>
     );
 }
