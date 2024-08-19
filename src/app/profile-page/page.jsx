@@ -54,13 +54,13 @@ export default function ProfilePage() {
                             htmlFor="name" 
                             className="block text-sm font-medium leading-6 text-white"
                         >
-                            Your Name
+                            Full Name
                         </label>
                         <input 
                             type="text" 
                             name="name" 
-                            placeholder="Full Name" 
-                            className="block flex-1 rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" />
+                            placeholder="John Doe" 
+                            className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" />
                     </span>
 
                     <span>
@@ -73,31 +73,66 @@ export default function ProfilePage() {
                         <input 
                             type="text" 
                             name="userName" 
-                            placeholder="User Name" 
-                            className="block flex-1 rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" 
+                            placeholder="@user1234" 
+                            className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" 
                         />
                     </span>
 
                     <span>
-                        <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">Email</label>
-                        <input type="email" name="email" placeholder="sample@email.com" className="block flex-1 rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" />
+                        <label 
+                            htmlFor="email" 
+                            className="block text-sm font-medium leading-6 text-white"
+                        >
+                            Email
+                        </label>
+                        <input 
+                            type="email" 
+                            name="email" 
+                            placeholder="sample@email.com" 
+                            className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" 
+                        />
                     </span>
 
                     <span>
-                        <label htmlFor="phoneNumber" className="block text-sm font-medium leading-6 text-white">Phone Number</label>
-                        <input type="tel" name="phoneNumber" id="phoneNumber" className="block flex-1 rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" />
+                        <label 
+                            htmlFor="phoneNumber" 
+                            className="block text-sm font-medium leading-6 text-white"
+                        >
+                            Phone Number
+                        </label>
+                        <input 
+                            type="tel" 
+                            name="phoneNumber" 
+                            placeholder="2348012340987" 
+                            id="phoneNumber" 
+                            className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" 
+                        />
                     </span>
 
                     <span>
-                        <label htmlFor="userAvartar" className="block text-sm font-medium leading-6 text-white">User Avartar</label>
-                        <input type="url" name="userAvartar" id="userAvartar" className="block flex-1 rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" />
+                        <label 
+                            htmlFor="userAvartar" 
+                            className="block text-sm font-medium leading-6 text-white"
+                        >
+                            User Avartar
+                        </label>
+                        <input 
+                            type="url" 
+                            name="userAvartar" 
+                            id="userAvartar" 
+                            className="block rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" 
+                        />
                     </span>
 
                     <div className="col-span-full">
-                        <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-white">
+                        <label 
+                            htmlFor="cover-photo" 
+                            className="block text-sm font-medium leading-6 text-white">
                             Cover photo
                         </label>
-                        <div className="mt-2 flex justify-center rounded-lg border border-dashed border-sky-200/60 bg-gray-800/50 px-6 py-10">
+                        <div 
+                            className="mt-2 flex justify-center rounded-lg border border-dashed border-sky-200/60 bg-gray-800/50 px-6 py-10"
+                        >
                             <div className="text-center">
                                 <PhotoIcon />
                                 <div className="mt-4 flex text-sm leading-6 text-gray-600">
@@ -106,7 +141,12 @@ export default function ProfilePage() {
                                         className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                                     >
                                         <span>Upload a file</span>
-                                        <input id="file-upload" name="file-upload" type="file" className="sr-only" />
+                                        <input 
+                                            id="file-upload" 
+                                            name="file-upload" 
+                                            type="file" 
+                                            className="sr-only" 
+                                        />
                                     </label>
                                     <p className="pl-1">or drag and drop</p>
                                 </div>
