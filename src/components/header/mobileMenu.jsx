@@ -89,7 +89,7 @@ export const SideMenu = ({ userDP, userName, fullName, open, handleToggle, isLog
                         className='text-xs text-white/60 font-extralight italic'
                     >
                         <span>
-                            @{userName.toLowerCase()}
+                            @{userName}
                         </span>
                     </TransitionLink>
                 </div>
