@@ -119,3 +119,8 @@ table:has(tr:nth-child(9):hover) tr:nth-child(9){
 table:has(tr:nth-child(10):hover) tr:nth-child(10){
   background-color: var(--table-hover);
 }
+input.PhoneInputInput {
+  color: rgb(156 163 175);
+  outline: none;
+  background-color: transparent;
+}
