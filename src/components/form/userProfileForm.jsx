@@ -21,7 +21,7 @@ export default function UserProfileForm() {
           type="text"
           name="name"
           placeholder="John Doe"
-          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" />
+          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400  focus:outline-none focus:ring-0 focus:border-sky-200  sm:text-sm sm:leading-6 caret-sky-200" />
       </span>
 
       <span>
@@ -35,7 +35,7 @@ export default function UserProfileForm() {
           type="text"
           name="userName"
           placeholder="@user1234"
-          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400  focus:outline-none focus:ring-0 focus:border-sky-200  sm:text-sm sm:leading-6 caret-sky-200"
         />
       </span>
 
@@ -50,7 +50,7 @@ export default function UserProfileForm() {
           type="email"
           name="email"
           placeholder="sample@email.com"
-          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 focus:outline-none focus:border-sky-200 sm:text-sm sm:leading-6 caret-sky-200"
         />
       </span>
 
@@ -67,7 +67,7 @@ export default function UserProfileForm() {
           defaultCountry="NG"
           value={phoneNumber}
           onChange={setPhoneNumber}
-          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-0 focus:border-sky-200 sm:text-sm sm:leading-6 caret-sky-200"
           placeholder="Enter phone number"
         />
       </span>
@@ -83,7 +83,7 @@ export default function UserProfileForm() {
           type="url"
           name="userAvartar"
           id="userAvartar"
-          className="block rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+          className="block rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400  focus:outline-none focus:ring-0 focus:border-sky-200  sm:text-sm sm:leading-6 caret-sky-200"
         />
       </span>
 
@@ -127,7 +127,7 @@ export default function UserProfileForm() {
             id="about"
             name="about"
             rows={3}
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-0 focus:border-sky-200 sm:text-sm sm:leading-6 caret-sky-200"
             defaultValue={''}
           />
         </div>
