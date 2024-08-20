@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import PhotoIcon from '@/icons/photoIcon';
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
+import Image from 'next/image';
 
-export default function UserProfileForm() {
+export default function UserProfileForm({ fullName, userName, email, userAvatar, coverImg, userRole }) {
 
   const [phoneNumber, setPhoneNumber] = useState('');
 
@@ -21,7 +22,8 @@ export default function UserProfileForm() {
           type="text"
           name="name"
           placeholder="John Doe"
-          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400  focus:outline-none focus:ring-0 focus:border-sky-200  sm:text-sm sm:leading-6 caret-sky-200" />
+          value={fullName}
+          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 px-4 text-slate-300 placeholder:text-gray-400  focus:outline-none focus:ring-0 focus:border-sky-200  sm:text-sm sm:leading-6 caret-sky-200" />
       </span>
 
       <span>
@@ -35,8 +37,29 @@ export default function UserProfileForm() {
           type="text"
           name="userName"
           placeholder="@user1234"
-          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400  focus:outline-none focus:ring-0 focus:border-sky-200  sm:text-sm sm:leading-6 caret-sky-200"
+          value={userName}
+          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 px-4 text-slate-300 placeholder:text-gray-400  focus:outline-none focus:ring-0 focus:border-sky-200  sm:text-sm sm:leading-6 caret-sky-200"
         />
+      </span>
+
+      <span>
+        <label
+          htmlFor="userRole"
+          className="block text-sm font-medium leading-6 text-white"
+        >
+          User Role
+        </label>
+        <select 
+          name="userRole" 
+          id="userRole"  
+          disabled={userRole!== 1}
+          className='block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 px-4 text-slate-300 placeholder:text-gray-400  focus:outline-none focus:ring-0 focus:border-sky-200  sm:text-sm sm:leading-6 disabled:text-slate-500'
+          defaultValue={userRole === 1 ? '1' : userRole === 2 ? '2' : userRole === 3 ? '3' : ''}
+        >
+          <option value="1" className='text-slate-900'>Admin</option>
+          <option value="2" className='text-slate-900'>Editor</option>
+          <option value="3" className='text-slate-900'>Reader</option>
+        </select>
       </span>
 
       <span>
@@ -50,7 +73,9 @@ export default function UserProfileForm() {
           type="email"
           name="email"
           placeholder="sample@email.com"
-          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 focus:outline-none focus:border-sky-200 sm:text-sm sm:leading-6 caret-sky-200"
+          disabled
+          value={email}
+          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 px-4 text-slate-500 placeholder:text-gray-400 focus:ring-0 focus:outline-none focus:border-sky-200 sm:text-sm sm:leading-6 caret-sky-200"
         />
       </span>
 
@@ -67,7 +92,7 @@ export default function UserProfileForm() {
           defaultCountry="NG"
           value={phoneNumber}
           onChange={setPhoneNumber}
-          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-0 focus:border-sky-200 sm:text-sm sm:leading-6 caret-sky-200"
+          className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 px-4 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-0 focus:border-sky-200 sm:text-sm sm:leading-6 caret-sky-200"
           placeholder="Enter phone number"
         />
       </span>
@@ -79,12 +104,22 @@ export default function UserProfileForm() {
         >
           User Avartar
         </label>
-        <input
-          type="url"
-          name="userAvartar"
-          id="userAvartar"
-          className="block rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400  focus:outline-none focus:ring-0 focus:border-sky-200  sm:text-sm sm:leading-6 caret-sky-200"
-        />
+        <div className='flex gap-2 items-center'>
+          <Image 
+            src={userAvatar} 
+            alt='user-avatar' 
+            width={35} 
+            height={35}
+            className='rounded-full border border-solid border-sky-200'
+          />
+          <input
+            type="url"
+            name="userAvatar"
+            value={userAvatar}
+            id="userAvatar"
+            className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 px-4 text-slate-300 placeholder:text-gray-400 focus:ring-0 focus:outline-none focus:border-sky-200 sm:text-sm sm:leading-6 caret-sky-200"
+          />
+        </div>
       </span>
 
       <div className="col-span-full">
@@ -127,7 +162,7 @@ export default function UserProfileForm() {
             id="about"
             name="about"
             rows={3}
-            className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-0 focus:border-sky-200 sm:text-sm sm:leading-6 caret-sky-200"
+            className="block w-full rounded-lg border-solid border border-sky-200 bg-transparent py-1.5 px-4 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-0 focus:border-sky-200 sm:text-sm sm:leading-6 caret-sky-200"
             defaultValue={''}
           />
         </div>
