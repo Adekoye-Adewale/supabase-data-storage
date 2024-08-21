@@ -11,6 +11,8 @@ export default function Mobile() {
         return <Hamburger/>
     }
 
+    console.log('mobileMenu===',data)
+
     return (
         <div>
             <MobileMenu {...data} isLoggedIn={isLoggedIn} />
